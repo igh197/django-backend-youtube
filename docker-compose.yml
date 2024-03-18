@@ -24,7 +24,7 @@ services:
 
   # app: 과 같은 뎁스로
   db:
-    image: postgres:16-alpiine
+    image: postgres:16-alpine
     volumes:
       - ./data/db:/var/lib/postgresql/data
     environment:
