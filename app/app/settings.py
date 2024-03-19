@@ -42,7 +42,9 @@ DJANGO_SYSTEM_APPS = [
 ]
 
 CUSTOM_USER_APPS =[
-    'users.apps.UsersConfig'
+    'users.apps.UsersConfig',
+    'rest_framework',
+    'drf_spectacular',
 ]
 INSTALLED_APPS= DJANGO_SYSTEM_APPS+CUSTOM_USER_APPS
 
@@ -132,3 +134,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
+REST_FRAMEWORK={
+    'DEFAULT_SCHEMA_CLASS':'drf_spectacular.openapi.AutoSchema'
+}
