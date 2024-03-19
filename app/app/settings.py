@@ -45,6 +45,7 @@ CUSTOM_USER_APPS =[
     'users.apps.UsersConfig',
     'rest_framework',
     'drf_spectacular',
+    'videos.apps.VideosConfig',
 ]
 INSTALLED_APPS= DJANGO_SYSTEM_APPS+CUSTOM_USER_APPS
 
