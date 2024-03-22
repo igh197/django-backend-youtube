@@ -8,6 +8,11 @@ from rest_framework import status
 # Create your views here.
 #POST 구독 신청
 class SubscriptionList(APIView):
+    #GET 내가 구독한 유튜버 리스트
+    def get(self,request):
+        subs = Subscription.objects.filter(subscriber=request.user)
+        serializer = SubSerializer(subs,many=True)
+        return Response(serializer.data)
     def post(self,request):
         user_data = request.data
         serializer = SubSerializer(data=user_data)

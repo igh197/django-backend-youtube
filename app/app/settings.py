@@ -48,9 +48,13 @@ CUSTOM_USER_APPS =[
     'videos.apps.VideosConfig',
     'comments.apps.CommentsConfig',
     'subscriptions.apps.SubscriptionsConfig',
+    'reactions.apps.ReactionsConfig',
+    'channels',
+    'chat.apps.Chatconfig'
 ]
 INSTALLED_APPS= DJANGO_SYSTEM_APPS+CUSTOM_USER_APPS
-
+ASGI_APPLICATION = 'app.routes.application' #web socket 통신
+WSGI_APPLICATION = 'app.wsgi.application' #http 동기 통신
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -79,7 +83,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'app.wsgi.application'
+
 
 
 # Database

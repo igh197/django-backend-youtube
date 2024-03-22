@@ -16,7 +16,16 @@ class SubscriptionAPITestCase(APITestCase):
             password = '123456'
         )
         self.client.login(email='1234@naver.com',password='1234')
+        #내가 구독한 유튜버 리스트
+    def test_sub_list_get(self):
+        Subscription.objects.create(subscriber=self.user1,subscribed_to = self.user2)
         
+        url = reverse('subed-to-list')
+        res = self.client.get(url)
+        
+        self.assertEqual(res.status_code,200)
+        self.assertEqual(len(res.data),1)
+        self.assertEqual(res.data[0]['subscribed_to'],self.user2.id)
         #구독버튼 테스트
     def test_sub_list_post(self):
         url = reverse('sub-list')
