@@ -24,7 +24,7 @@
   });
 
   function fetchChatRooms() {
-    fetch("http://127.0.0.1:8000/api/v1/chat/room/")
+    fetch("http://ec2-52-78-1-68.ap-northeast-2.compute.amazonaws.com//api/v1/chat/room/")
       .then((response) => response.json())
       .then((data) => {
         const roomContainer = document.getElementById("room-container");
