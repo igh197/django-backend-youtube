@@ -7,3 +7,10 @@ psycopg2-binary>=2.9.9,<3.0
 
 #DRF-Spectacular
 drf-Spectacular>=0.27.1,<0.28.0
+
+#Django Chatting Socket 
+channels>=4.0.0,<4.0.9
+
+daphne>=4.1.0,<4.2.0
+
+uWSGI>=2.0.24,<2.1.0

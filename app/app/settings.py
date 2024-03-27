@@ -20,17 +20,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-a)!7nvz9bk+i%=+!ks1f74n4v%y7$cj9#q)9u0dt_0@atx+39y'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'password123')
+DEBUG = bool(int(os.environ.get('DEBUG', 0)))
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 DJANGO_SYSTEM_APPS = [
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -50,10 +49,10 @@ CUSTOM_USER_APPS =[
     'subscriptions.apps.SubscriptionsConfig',
     'reactions.apps.ReactionsConfig',
     'channels',
-    'chat.apps.Chatconfig'
+	'chat.apps.ChatConfig'
 ]
 INSTALLED_APPS= DJANGO_SYSTEM_APPS+CUSTOM_USER_APPS
-ASGI_APPLICATION = 'app.routes.application' #web socket 통신
+ASGI_APPLICATION = 'app.route.application' #web socket 통신
 WSGI_APPLICATION = 'app.wsgi.application' #http 동기 통신
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -143,4 +142,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
 REST_FRAMEWORK={
     'DEFAULT_SCHEMA_CLASS':'drf_spectacular.openapi.AutoSchema'
+}
+CHANNEL_LAYERS={
+    'default':{
+        "BACKEND":"channels.layers.InMemoryChannelLayer"
+    }
 }
