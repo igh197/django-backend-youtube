@@ -1,0 +1,25 @@
+# Ignore virtual environments
+venv/
+.virtualenv/
+.venv/
+
+# Poetry
+pyproject.toml
+poetry.lock
+.poetry/
+
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+
+# Environment variables
+.env
